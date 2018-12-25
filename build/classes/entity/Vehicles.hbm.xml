@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-12-25 10:47:42 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Vehicles" table="vehicles" catalog="genericdatabase" optimistic-lock="version">
+        <id name="idve" type="java.lang.Integer">
+            <column name="idve" />
+            <generator class="identity" />
+        </id>
+        <property name="make" type="string">
+            <column name="make" length="45" not-null="true" />
+        </property>
+        <property name="model" type="string">
+            <column name="model" length="45" not-null="true" />
+        </property>
+        <property name="year" type="timestamp">
+            <column name="year" length="19" not-null="true" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" length="45" not-null="true" />
+        </property>
+        <property name="plates" type="string">
+            <column name="plates" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

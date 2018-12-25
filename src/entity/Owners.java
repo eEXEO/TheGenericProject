@@ -10,7 +10,7 @@ public class Owners  implements java.io.Serializable {
 
 
      private Integer idow;
-     private int pesel;
+     private long pesel;
      private String name;
      private String surname;
      private String address;
@@ -18,7 +18,7 @@ public class Owners  implements java.io.Serializable {
     public Owners() {
     }
 
-    public Owners(int pesel, String name, String surname, String address) {
+    public Owners(long pesel, String name, String surname, String address) {
        this.pesel = pesel;
        this.name = name;
        this.surname = surname;
@@ -32,11 +32,11 @@ public class Owners  implements java.io.Serializable {
     public void setIdow(Integer idow) {
         this.idow = idow;
     }
-    public int getPesel() {
+    public long getPesel() {
         return this.pesel;
     }
     
-    public void setPesel(int pesel) {
+    public void setPesel(long pesel) {
         this.pesel = pesel;
     }
     public String getName() {

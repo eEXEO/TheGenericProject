@@ -27,7 +27,6 @@ public class TGP extends Application {
 
     public static void main(String[] args) 
     {
-        //insertOwner(11111111, "IMIEZ", "NAZWISKOZ", "ADRESZ");
         launch(args);
     }
     

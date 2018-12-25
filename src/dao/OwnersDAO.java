@@ -8,7 +8,7 @@ public class OwnersDAO
 {
     static Session session = null;
     
-    static public void insertOwner(int pesel, String name, String surname, String address)
+    static public void insertOwner(long pesel, String name, String surname, String address)
     {
         Owners data = new Owners(pesel, name, surname, address);
         

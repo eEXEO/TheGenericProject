@@ -8,7 +8,7 @@
             <column name="idow" />
             <generator class="identity" />
         </id>
-        <property name="pesel" type="int">
+        <property name="pesel" type="long">
             <column name="pesel" not-null="true" />
         </property>
         <property name="name" type="string">

@@ -3,6 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/OwnerAdd.fxml</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/OwnerModify.fxml</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/OwnerDelete.fxml</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/OwnerModifyController.java</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/OwnerAddController.java</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/ViewPESEL.fxml</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/OwnerDeleteController.java</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/FXMLSheetController.java</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/VehicleDelete.fxml</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/VehicleDeleteController.java</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/ViewPLATESController.java</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/ViewPLATES.fxml</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/ViewPESELController.java</file>
             <file>file:/D:/GitHub/TheGenericProject/src/top/TGP.java</file>
         </group>
     </open-files>

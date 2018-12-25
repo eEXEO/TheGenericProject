@@ -14,8 +14,10 @@ import javafx.stage.Stage;
 public class TGP extends Application {
     
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginPrompt.fxml"));
+    public void start(Stage stage) throws Exception 
+    {
+        //Parent root = FXMLLoader.load(getClass().getResource("LoginPrompt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLSheet.fxml"));
         
         Scene scene = new Scene(root);
         

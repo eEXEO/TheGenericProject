@@ -20,7 +20,7 @@ public class TGP extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLSheet.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginPrompt.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -33,7 +33,7 @@ public class TGP extends Application {
      */
     public static void main(String[] args) 
     {
-        insertOwner(11111111, "IMIEZ", "NAZWISKOZ", "ADRESZ");
+        //insertOwner(11111111, "IMIEZ", "NAZWISKOZ", "ADRESZ");
         launch(args);
     }
     

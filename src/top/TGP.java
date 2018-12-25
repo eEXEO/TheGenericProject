@@ -5,17 +5,12 @@
  */
 package top;
 
-import static dao.OwnersDAO.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Tomek
- */
 public class TGP extends Application {
     
     @Override
@@ -28,9 +23,6 @@ public class TGP extends Application {
         stage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) 
     {
         //insertOwner(11111111, "IMIEZ", "NAZWISKOZ", "ADRESZ");

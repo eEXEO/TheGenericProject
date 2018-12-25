@@ -21,7 +21,7 @@
          </font>
       </Text>
       <TextField fx:id="inPass" layoutX="191.0" layoutY="155.0" prefHeight="25.0" prefWidth="307.0" />
-      <Label fx:id="outInfo" layoutX="128.0" layoutY="207.0" prefHeight="17.0" prefWidth="345.0" textAlignment="CENTER" textFill="RED">
+      <Label fx:id="outInfo" alignment="CENTER" layoutX="128.0" layoutY="207.0" prefHeight="17.0" prefWidth="345.0" textAlignment="CENTER" textFill="RED">
          <font>
             <Font size="13.0" />
          </font>

@@ -2,18 +2,16 @@ package top;
 
 import static dao.OwnersDAO.*;
 import entity.Owners;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import static top.SessionHolder.*;
 
 public class PESELPromptController implements Initializable 
@@ -57,9 +55,9 @@ public class PESELPromptController implements Initializable
                 ap.getChildren().setAll(apx);
                 
             }
-            catch (Exception e) 
+            catch (IOException e) 
             {
-                e.printStackTrace();
+                System.out.println(e);
             }
         }
        

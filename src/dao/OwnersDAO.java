@@ -2,9 +2,12 @@ package dao;
 
 import entity.Owners;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import top.SessionHolder;
 
 public class OwnersDAO 
 {
@@ -48,7 +51,20 @@ public class OwnersDAO
     
     static public Owners editOwner(long pesel, String name, String surname, String address)
     {
-        return new Owners();
+        session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Object ob = session.get(Owners.class, SessionHolder.getOwner().getIdow());
+        Owners o = (Owners)ob;
+        o.setAddress(address);
+        o.setName(name);
+        o.setSurname(surname);
+        
+        session.update(ob);
+        
+        tx.commit();
+        session.close();
+        
+        return o;
     }
     
 }

@@ -25,14 +25,14 @@ public class FXMLSheetController implements Initializable
     @FXML
     private void vehicleEdit(ActionEvent event) throws IOException 
     {
-        AnchorPane apx = FXMLLoader.load(getClass().getResource("VehicleModify.fxml"));
+        AnchorPane apx = FXMLLoader.load(getClass().getResource("PLATESPrompt.fxml"));
         ap.getChildren().setAll(apx);
     }
     
     @FXML
     private void vehicleDelete(ActionEvent event) throws IOException 
     {
-        AnchorPane apx = FXMLLoader.load(getClass().getResource("VehicleRemove.fxml"));
+        AnchorPane apx = FXMLLoader.load(getClass().getResource("VehicleDelete.fxml"));
         ap.getChildren().setAll(apx);
     }
     

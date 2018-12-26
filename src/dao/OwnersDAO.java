@@ -2,8 +2,6 @@ package dao;
 
 import entity.Owners;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -65,6 +63,23 @@ public class OwnersDAO
         session.close();
         
         return o;
+    }
+    
+    static public Owners deleteOwner(String pesel)
+    {
+        Owners owner = checkPesel(pesel);
+        int id = owner.getIdow();
+        session = HibernateUtil.getSessionFactory().openSession();
+        System.out.println(id);
+        
+        Transaction tx = session.beginTransaction();  
+        Object ob = session.load(Owners.class, id);
+        Owners veh = (Owners) ob;
+
+        session.delete(veh);
+        tx.commit();  
+        
+        return veh;
     }
     
 }

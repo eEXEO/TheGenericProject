@@ -53,7 +53,8 @@ public class Vehicles  implements java.io.Serializable {
         return this.year;
     }
     
-    public void setYear(Date year) {
+    public void setYear(Date year) 
+    {
         this.year = year;
     }
     public String getColor() {

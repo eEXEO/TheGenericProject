@@ -2,13 +2,36 @@ package top;
 
 import entity.Officials;
 import entity.Owners;
+import entity.Vehicles;
 import javafx.scene.layout.AnchorPane;
 
 public class SessionHolder 
 {
     static private Officials servant;
+    static private Vehicles vehicle;
     static private Owners owner;
     static private AnchorPane ap;
+
+
+    public static Vehicles getVehicle() 
+    {
+        return vehicle;
+    }
+
+    public static void setVehicle(Vehicles vehicle) 
+    {
+        SessionHolder.vehicle = vehicle;
+    }
+
+    public static AnchorPane getAp() 
+    {
+        return ap;
+    }
+
+    public static void setAp(AnchorPane ap) 
+    {
+        SessionHolder.ap = ap;
+    }
 
     public static AnchorPane getAnchor() 
     {

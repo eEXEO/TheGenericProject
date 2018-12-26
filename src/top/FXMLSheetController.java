@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import static top.SessionHolder.*;
 
 public class FXMLSheetController implements Initializable 
 {
@@ -45,7 +46,7 @@ public class FXMLSheetController implements Initializable
     @FXML
     private void ownerEdit(ActionEvent event) throws IOException 
     {
-        AnchorPane apx = FXMLLoader.load(getClass().getResource("OwnerModify.fxml"));
+        AnchorPane apx = FXMLLoader.load(getClass().getResource("PESELPrompt.fxml"));
         ap.getChildren().setAll(apx);
     }
     
@@ -73,7 +74,7 @@ public class FXMLSheetController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        // TODO
+        setAnchor(ap);
     }    
     
 }

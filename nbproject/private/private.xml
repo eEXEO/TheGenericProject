@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/View.fxml</file>
             <file>file:/D:/GitHub/TheGenericProject/src/dao/VehiclesDAO.java</file>
             <file>file:/D:/GitHub/TheGenericProject/src/top/SessionHolder.java</file>
+            <file>file:/D:/GitHub/TheGenericProject/src/top/ViewController.java</file>
             <file>file:/D:/GitHub/TheGenericProject/src/top/VehicleDeleteController.java</file>
             <file>file:/D:/GitHub/TheGenericProject/src/dao/OwnersDAO.java</file>
             <file>file:/D:/GitHub/TheGenericProject/src/top/LoginPromptController.java</file>

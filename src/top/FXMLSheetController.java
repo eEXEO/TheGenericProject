@@ -71,6 +71,13 @@ public class FXMLSheetController implements Initializable
         ap.getChildren().setAll(apx);
     }
     
+    @FXML
+    private void connectOV(ActionEvent event) throws IOException 
+    {
+        AnchorPane apx = FXMLLoader.load(getClass().getResource("ConnectOV.fxml"));
+        ap.getChildren().setAll(apx);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {

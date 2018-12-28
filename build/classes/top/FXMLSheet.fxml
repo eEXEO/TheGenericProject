@@ -24,6 +24,11 @@
                   <MenuItem mnemonicParsing="false" onAction="#ownerDelete" text="Delete" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#connectOV" text="Connect O-V" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Display">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#viewPESEL" text="Find by PESEL" />

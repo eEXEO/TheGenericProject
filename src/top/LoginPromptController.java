@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import static dao.OfficialsDAO.*;
 import static top.SessionHolder.*;
 import entity.Officials;
+import javafx.scene.control.PasswordField;
 
 public class LoginPromptController implements Initializable 
 {
@@ -22,9 +23,11 @@ public class LoginPromptController implements Initializable
     @FXML
     private Label outInfo;
     @FXML
-    private TextField inLogin;
+    private PasswordField inPass;
     @FXML
-    private TextField inPass;
+    private TextField inLogin;
+    //@FXML
+    //private TextField inPass;
     
     private String login;
     private String pass;

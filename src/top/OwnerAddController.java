@@ -45,6 +45,7 @@ public class OwnerAddController implements Initializable
             address = as.getText();
             
             insertOwner(pesel, name, surname, address);
+            ll.setText("Inserted correctly");
         }
         
     }

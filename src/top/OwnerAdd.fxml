@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.OwnerAddController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@darkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.OwnerAddController">
    <children>
       <TextField fx:id="ne" layoutX="219.0" layoutY="54.0" prefHeight="29.0" prefWidth="310.0">
          <font>
@@ -49,7 +49,8 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="ll" alignment="BASELINE_CENTER" layoutX="55.0" layoutY="316.0" prefHeight="17.0" prefWidth="183.0" textAlignment="CENTER" textFill="RED" />
-      <Button layoutX="348.0" layoutY="321.0" mnemonicParsing="false" onAction="#actionAddOwner" prefHeight="25.0" prefWidth="183.0" text="Create" />
+      <Label fx:id="outInfo" alignment="BASELINE_CENTER" layoutX="147.0" layoutY="325.0" prefHeight="17.0" prefWidth="183.0" textAlignment="CENTER" textFill="RED" />
+      <Button layoutX="348.0" layoutY="321.0" mnemonicParsing="false" onAction="#actionAddOwner" prefHeight="25.0" prefWidth="150.0" text="Create" />
+      <Label fx:id="ll" alignment="CENTER" layoutX="175.0" layoutY="26.0" prefHeight="17.0" prefWidth="250.0" text="Add owner" textAlignment="CENTER" />
    </children>
 </AnchorPane>

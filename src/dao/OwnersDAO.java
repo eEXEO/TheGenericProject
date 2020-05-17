@@ -1,6 +1,11 @@
 package dao;
 
 import entity.Owners;
+import entity.Vehicles;
+import java.security.acl.Owner;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -65,21 +70,32 @@ public class OwnersDAO
         return o;
     }
     
-    static public Owners deleteOwner(String pesel)
+    
+    static public Owners deleteOwner(int id)
     {
-        Owners owner = checkPesel(pesel);
-        int id = owner.getIdow();
         session = HibernateUtil.getSessionFactory().openSession();
-        System.out.println(id);
         
         Transaction tx = session.beginTransaction();  
         Object ob = session.load(Owners.class, id);
-        Owners veh = (Owners) ob;
+        Owners own = (Owners) ob;
 
-        session.delete(veh);
+        session.delete(own);
         tx.commit();  
         
-        return veh;
+        return own;
     }
     
+    
+    static public ObservableList<Owners> addTable()
+    {
+        ObservableList<Owners> owners = FXCollections.observableArrayList();
+        
+        Session session = dao.HibernateUtil.getSessionFactory().openSession();
+        List<Owners> list = session.createCriteria(Owners.class).list();
+        for(Owners ent : list)
+        {
+            owners.add(ent);
+        }
+        return owners;
+    }
 }

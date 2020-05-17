@@ -1,5 +1,5 @@
 package entity;
-// Generated 2018-12-25 10:47:42 by Hibernate Tools 4.3.1
+// Generated 2020-01-07 14:55:57 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -16,16 +16,18 @@ public class Vehicles  implements java.io.Serializable {
      private Date year;
      private String color;
      private String plates;
+     private Boolean hasOwner;
 
     public Vehicles() {
     }
 
-    public Vehicles(String make, String model, Date year, String color, String plates) {
+    public Vehicles(String make, String model, Date year, String color, String plates, Boolean hasOwner) {
        this.make = make;
        this.model = model;
        this.year = year;
        this.color = color;
        this.plates = plates;
+       this.hasOwner = hasOwner;
     }
    
     public Integer getIdve() {
@@ -70,6 +72,14 @@ public class Vehicles  implements java.io.Serializable {
     
     public void setPlates(String plates) {
         this.plates = plates;
+    }
+
+    public Boolean getHasOwner() {
+        return hasOwner;
+    }
+
+    public void setHasOwner(Boolean hasOwner) {
+        this.hasOwner = hasOwner;
     }
 
 

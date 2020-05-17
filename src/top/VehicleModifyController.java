@@ -32,16 +32,15 @@ public class VehicleModifyController implements Initializable {
     private TextField cr;
     @FXML
     private TextField ps;
-    
     @FXML
-    private Label ll;
+    private Label outInfo;
     
     @FXML
     private void actionEditVehicle(ActionEvent event) throws ParseException 
     {
-        if(mk.getText().isEmpty()&&ml.getText().isEmpty()&&yr.getText().isEmpty()&&cr.getText().isEmpty()&&ps.getText().isEmpty())
+        if(mk.getText().isEmpty() && ml.getText().isEmpty() && yr.getText().isEmpty() && cr.getText().isEmpty() && ps.getText().isEmpty())
         {
-            ll.setText("Incorrect values");
+            outInfo.setText("Incorrect values");
         }
         else
         {
@@ -51,7 +50,9 @@ public class VehicleModifyController implements Initializable {
             color = cr.getText();
             plates = ps.getText();
             
+            
             editVehicle(make, model, year, color, plates) ;
+            outInfo.setText("Edited successfully");
         }
         
     }

@@ -26,16 +26,19 @@ public class OwnerAddController implements Initializable
     private TextField as;
     @FXML
     private TextField pl;
-    
     @FXML
-    private Label ll;
+    private Label outInfo;
     
     @FXML
     private void actionAddOwner(ActionEvent event) throws ParseException 
     {
-        if(ne.getText().isEmpty()&&se.getText().isEmpty()&&as.getText().isEmpty()&&pl.getText().isEmpty())
+        if(ne.getText().isEmpty() || se.getText().isEmpty() || as.getText().isEmpty() || pl.getText().isEmpty() || !pl.getText().matches("[0-9]+") || pl.getText().length() != 11)
         {
-            ll.setText("Incorrect values");
+            outInfo.setText("Incorrect values");
+        }
+        else if(dao.OwnersDAO.checkPesel(pl.getText()) != null)
+        {
+            outInfo.setText("Inserted PESEL exist in database");
         }
         else
         {
@@ -45,14 +48,15 @@ public class OwnerAddController implements Initializable
             address = as.getText();
             
             insertOwner(pesel, name, surname, address);
-            ll.setText("Inserted correctly");
+            outInfo.setText("Inserted correctly");
         }
         
     }
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        
     }    
     
 }

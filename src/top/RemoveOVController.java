@@ -11,52 +11,73 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import static dao.WiwDAO.*;
+import entity.Vehicles;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
  *
- * @author Tomek
+ * @author 9
  */
 public class RemoveOVController implements Initializable {
 
-    private String plate;
-    private String pesel;
+@FXML
+    private TableView<Vehicles> tableView;
     
     @FXML
-    private TextField pl;
+    private TableColumn<?, ?> make;
+        
     @FXML
-    private TextField ps;
+    private TableColumn<?, ?> model;
+            
+    @FXML
+    private TableColumn<?, ?> year;
+                
+    @FXML
+    private TableColumn<?, ?> color;
+                    
+    @FXML
+    private TableColumn<?, ?> plates;
+    
+    @FXML
+    private TableColumn<?, ?> hasOwner;
+    
     @FXML
     private Label ll;
-    
-    @FXML
-    private void actionOVC(ActionEvent event) throws ParseException 
+
+public void setTable()
     {
-        if(pl.getText().isEmpty()&&ps.getText().isEmpty())
+        make.setCellValueFactory(new PropertyValueFactory<>("make"));
+        model.setCellValueFactory(new PropertyValueFactory<>("model"));
+        year.setCellValueFactory(new PropertyValueFactory<>("year"));
+        color.setCellValueFactory(new PropertyValueFactory<>("color"));
+        plates.setCellValueFactory(new PropertyValueFactory<>("plates"));
+        hasOwner.setCellValueFactory(new PropertyValueFactory<>("hasOwner"));
+    }
+
+
+    @FXML
+    private void actionRemoveOV(ActionEvent event) throws ParseException 
+    {
+        if(tableView.getSelectionModel().getSelectedIndex() > -1)
         {
-            ll.setText("Incorrect values");
+        dao.VehiclesDAO.editVehicleOV(tableView.getSelectionModel().getSelectedItem(), false);
+        dao.WiwDAO.removeOV(tableView.getSelectionModel().getSelectedItem().getIdve());
+        tableView.setItems(dao.VehiclesDAO.addToTable());
         }
-        else
-        {
-            plate = pl.getText();
-            pesel = ps.getText();
-            
-            if(removeOV(plate, pesel))
-            {
-                ll.setText("Success");
-            }else
-            {
-                ll.setText("Something went wrong");
-            }
-        }
-        
     }
     
+    
+    
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    public void initialize(URL url, ResourceBundle rb) 
+    {  
+        setTable();
+        tableView.setItems(dao.VehiclesDAO.addToTable());
+        ll.setText("Remove vehicle owner");
+    }  
+       
     
 }

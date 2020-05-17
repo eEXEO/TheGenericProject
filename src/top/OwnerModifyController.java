@@ -31,13 +31,15 @@ public class OwnerModifyController implements Initializable {
     
     @FXML
     private Label ll;
+    @FXML
+    private Label outInfo;
     
     @FXML
     private void actionEditOwner(ActionEvent event) throws ParseException 
     {
         if(ne.getText().isEmpty()&&se.getText().isEmpty()&&as.getText().isEmpty())
         {
-            ll.setText("Incorrect values");
+            outInfo.setText("Incorrect values");
         }
         else
         {
@@ -47,6 +49,7 @@ public class OwnerModifyController implements Initializable {
             address = as.getText();
             
             editOwner(pesel, name, surname, address);
+            outInfo.setText("Edited successfully");
         }
         
     }
@@ -60,6 +63,7 @@ public class OwnerModifyController implements Initializable {
         se.setText(owner.getSurname());
         as.setText(owner.getAddress());
         pl.setText(Long.toString(owner.getPesel()));
+        ll.setText("Edit owner");
     }    
     
 }

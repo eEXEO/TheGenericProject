@@ -1,13 +1,18 @@
 package top;
 
+import static dao.VehiclesDAO.checkPlates;
+import entity.Vehicles;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import static top.SessionHolder.*;
 
@@ -20,6 +25,8 @@ public class FXMLSheetController implements Initializable
     private Label labelx;
     @FXML
     private Label labely;
+    @FXML
+    private TableView table;
     
     @FXML
     private void vehicleNew(ActionEvent event) throws IOException 
@@ -90,6 +97,19 @@ public class FXMLSheetController implements Initializable
         ap.getChildren().setAll(apx);
     }
     
+    @FXML
+    private void viewVehicles(ActionEvent event) throws IOException
+    {
+        AnchorPane apx = FXMLLoader.load(getClass().getResource("ViewVehicles.fxml"));
+        ap.getChildren().setAll(apx);
+    }
+    
+    @FXML
+    private void viewOwners(ActionEvent event) throws IOException
+    {
+        AnchorPane apx = FXMLLoader.load(getClass().getResource("ViewOwners.fxml"));
+        ap.getChildren().setAll(apx);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -98,8 +118,12 @@ public class FXMLSheetController implements Initializable
         String surname = getServant().getSurname();
         String fn = getServant().getFunction();
         
-        labelx.setText("Welcome back "+name+" "+surname);
-        labely.setText("Your current status is: "+fn);
+        labelx.setText("Welcome back: " + name + " " + surname);
+        labely.setText("Your current status is: " + fn);
+        ObservableList<Vehicles> items = FXCollections.observableArrayList();
+        
+        
+        
     }    
     
 }

@@ -3,12 +3,10 @@ package dao;
 import static dao.VehiclesDAO.session;
 import entity.Wiw;
 import entity.Owners;
-import entity.Vehicles;
 import java.text.ParseException;
 import org.hibernate.Transaction;
 import static top.SessionHolder.*;
-import static dao.VehiclesDAO.*;
-import static dao.OwnersDAO.*;
+import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
@@ -33,11 +31,9 @@ public class WiwDAO
             
             if(wiw!=null)
             {
-                System.out.println("found");
                 return false;
             }else
             {
-                System.out.println("not found");
                 return true;
             }
 	}
@@ -49,24 +45,100 @@ public class WiwDAO
 	}
     }
     
-    static public boolean insertOV(String plates, String pesel) throws ParseException
+    
+    static public boolean checkV(int vid)
+    {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Wiw wiw = null;
+        
+        try {
+            session.beginTransaction();
+			
+            Criteria criteria = session.createCriteria(Wiw.class);
+            criteria.add(Restrictions.eq("vid", vid));
+			
+            wiw = (Wiw) criteria.uniqueResult();			
+            session.getTransaction().commit();
+            
+            if(wiw != null)
+            {
+                return false;
+            }else
+            {
+                return true;
+            }
+	}
+        catch (Exception e) 
+        {
+            System.out.println(e);
+            session.getTransaction().rollback();
+            return false;
+	}
+    }
+    
+    static public boolean checkO(int oid)
+    {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Wiw wiw = null;
+        
+        try {
+            session.beginTransaction();
+			
+            Criteria criteria = session.createCriteria(Wiw.class);
+            criteria.add(Restrictions.eq("oid", oid));
+			
+            wiw = (Wiw) criteria.uniqueResult();			
+            session.getTransaction().commit();
+            
+            if(wiw != null)
+            {
+                return false;
+            }else
+            {
+                return true;
+            }
+	}
+        catch (Exception e) 
+        {
+            System.out.println(e);
+            session.getTransaction().rollback();
+            return false;
+	}
+    }
+    
+    
+    static public List<Wiw> checkOwn(int oid)
+    {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Wiw wiw = null;
+        
+        try {
+            session.beginTransaction();
+			
+            Criteria criteria = session.createCriteria(Wiw.class);
+            List<Wiw> list = criteria.add(Restrictions.eq("oid", oid)).list();
+			
+            session.getTransaction().commit();
+            
+            return list;
+	}
+        catch (Exception e) 
+        {
+            System.out.println(e);
+            session.getTransaction().rollback();
+            return null;
+	}
+    }
+    
+    static public boolean insertOV(int idve, int idow) throws ParseException
     {
         
-        int vid, oid;
+
         int gid = getServant().getIdof();
-        Owners tempo = checkPesel(pesel);
-        Vehicles tempv = checkPlates(plates);
-        
-        if(tempo==null || tempv==null)
-        {
-            return false;
-        }else
-        {
-            vid = tempv.getIdve();
-            oid = tempo.getIdow();
-            Wiw data = new Wiw(vid, oid, gid);
+
+            Wiw data = new Wiw(idve, idow, gid);
             
-            if(checkOV(vid, oid))
+            if(checkOV(idve, idow))
             {
                 session = HibernateUtil.getSessionFactory().openSession();
                 Transaction tx = session.beginTransaction();
@@ -81,10 +153,10 @@ public class WiwDAO
             {
                 return false;
             }
-        }
+        
     }
     
-    static public Wiw rcheckOV(int vid, int oid)
+    static public Wiw rcheckOV(int vid)
     {
         session = HibernateUtil.getSessionFactory().openSession();
         Wiw db = null;
@@ -94,7 +166,6 @@ public class WiwDAO
 			
             Criteria criteria = session.createCriteria(Wiw.class);
             criteria.add(Restrictions.eq("vid", vid));
-            criteria.add(Restrictions.eq("oid", oid));
             
             db = (Wiw) criteria.uniqueResult();			
             session.getTransaction().commit();
@@ -107,23 +178,11 @@ public class WiwDAO
         
         return db;
     }
-    
-    static public boolean removeOV(String plates, String pesel) throws ParseException
+   
+    static public boolean removeOV(int idve) throws ParseException
     {
-        
-        int vid, oid;
-        Owners tempo = checkPesel(pesel);
-        Vehicles tempv = checkPlates(plates);
-        
-        if(tempo==null || tempv==null)
-        {
-            return false;
-        }else
-        {
-            vid = tempv.getIdve();
-            oid = tempo.getIdow();
-            
-            Wiw rchk = rcheckOV(vid, oid);
+
+            Wiw rchk = rcheckOV(idve);
                         
             if(rchk!=null)
             {
@@ -144,6 +203,6 @@ public class WiwDAO
             {
                 return false;
             }
-        }
+        
     }
 }

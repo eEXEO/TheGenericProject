@@ -5,6 +5,9 @@ import entity.Vehicles;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,8 +20,9 @@ public class VehiclesDAO
     
     static public void insertVehicle(String make, String model, String year, String color, String plates) throws ParseException
     {
-        Date yeart = new SimpleDateFormat("dd-MM-yyyy").parse(year);
-        Vehicles data = new Vehicles(make, model, yeart, color, plates);
+        boolean hasOwner = false;
+        Date yeart = new SimpleDateFormat("yyyy-MM-dd").parse(year);
+        Vehicles data = new Vehicles(make, model, yeart, color, plates, hasOwner);
         
         session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
@@ -37,6 +41,32 @@ public class VehiclesDAO
 			
             Criteria criteria = session.createCriteria(Vehicles.class);
             criteria.add(Restrictions.eq("plates", plates));
+			
+            vehicle = (Vehicles) criteria.uniqueResult();			
+            session.getTransaction().commit();
+	}
+        catch (Exception e) 
+        {
+            System.out.println(e);
+            session.getTransaction().rollback();
+	}
+        
+        return vehicle;
+    }
+    
+    
+    static public Vehicles checkId(int id)
+    {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Vehicles vehicle = null;
+        
+        
+        try {
+            session.beginTransaction();
+			
+            Criteria criteria = session.createCriteria(Vehicles.class);
+            
+            criteria.add(Restrictions.eq("idve", id));
 			
             vehicle = (Vehicles) criteria.uniqueResult();			
             session.getTransaction().commit();
@@ -73,10 +103,22 @@ public class VehiclesDAO
         return o;
     }
     
-    static public Vehicles deleteVehicle(String plates)
+    
+    static public Vehicles editVehicleOV(Vehicles veh, Boolean b)
     {
-        Vehicles vehicle = checkPlates(plates);
-        int id = vehicle.getIdve();
+        session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Vehicles o = (Vehicles)veh;
+        o.setHasOwner(b);
+        session.update(veh);
+        tx.commit();
+        session.close();
+        
+        return veh;
+    }
+    
+    static public Vehicles deleteVehicle(int id)
+    {
         session = HibernateUtil.getSessionFactory().openSession();
         
         Transaction tx = session.beginTransaction();  
@@ -88,4 +130,19 @@ public class VehiclesDAO
         
         return veh;
     }
+    
+    
+    static public ObservableList<Vehicles> addToTable()
+    {
+        ObservableList<Vehicles> vehicles = FXCollections.observableArrayList();
+        
+        Session session = dao.HibernateUtil.getSessionFactory().openSession();
+        List<Vehicles> list = session.createCriteria(Vehicles.class).list();
+        for(Vehicles ent : list)
+        {
+            vehicles.add(ent);
+        }
+        return vehicles;
+    }
+    
 }

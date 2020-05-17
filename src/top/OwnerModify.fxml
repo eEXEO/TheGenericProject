@@ -7,49 +7,50 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.OwnerModifyController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@darkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.OwnerModifyController">
    <children>
-      <TextField fx:id="ne" layoutX="226.0" layoutY="54.0" prefHeight="29.0" prefWidth="310.0">
+      <TextField fx:id="ne" layoutX="219.0" layoutY="54.0" prefHeight="29.0" prefWidth="310.0">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <Text layoutX="117.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+      <Text layoutX="110.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="se" layoutX="226.0" layoutY="104.0" prefHeight="29.0" prefWidth="310.0">
+      <TextField fx:id="se" layoutX="219.0" layoutY="104.0" prefHeight="29.0" prefWidth="310.0">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <Text layoutX="117.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname">
+      <Text layoutX="110.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="as" layoutX="226.0" layoutY="151.0" prefHeight="29.0" prefWidth="310.0">
+      <TextField fx:id="as" layoutX="219.0" layoutY="151.0" prefHeight="29.0" prefWidth="310.0">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <Text layoutX="117.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+      <Text layoutX="110.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="pl" editable="false" layoutX="226.0" layoutY="195.0" prefHeight="29.0" prefWidth="310.0">
+      <TextField fx:id="pl" editable="false" layoutX="219.0" layoutY="195.0" prefHeight="29.0" prefWidth="310.0">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <Text layoutX="117.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PESEL">
+      <Text layoutX="110.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PESEL">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="ll" alignment="BASELINE_CENTER" layoutX="62.0" layoutY="316.0" prefHeight="17.0" prefWidth="183.0" textAlignment="CENTER" textFill="RED" />
-      <Button layoutX="355.0" layoutY="321.0" mnemonicParsing="false" onAction="#actionEditOwner" prefHeight="25.0" prefWidth="183.0" text="Change" />
+      <Label fx:id="outInfo" alignment="BASELINE_CENTER" layoutX="147.0" layoutY="325.0" prefHeight="17.0" prefWidth="183.0" textAlignment="CENTER" textFill="RED" />
+      <Button layoutX="348.0" layoutY="321.0" mnemonicParsing="false" onAction="#actionEditOwner" prefHeight="25.0" prefWidth="150.0" text="Change" />
+      <Label fx:id="ll" alignment="CENTER" layoutX="175.0" layoutY="23.0" prefHeight="17.0" prefWidth="250.0" text="Label" textAlignment="CENTER" />
    </children>
 </AnchorPane>

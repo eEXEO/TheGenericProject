@@ -1,8 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package top;
 
 import entity.Owners;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,11 +19,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import static top.SessionHolder.*;
+import static top.SessionHolder.getAnchor;
 
-public class PESELPromptController implements Initializable 
-{
-    @FXML
+/**
+ * FXML Controller class
+ *
+ * @author 9
+ */
+public class SearchOwnerController implements Initializable {
+
+     @FXML
     private TableView<Owners> tableView;
     @FXML
     private TableColumn<?, ?> pesel;
@@ -27,8 +38,9 @@ public class PESELPromptController implements Initializable
     private TableColumn<?, ?> surname;
     @FXML
     private TableColumn<?, ?> address;
-    
-    public void setTable()
+
+
+public void setTable()
     {
         pesel.setCellValueFactory(new PropertyValueFactory<>("pesel"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -36,17 +48,23 @@ public class PESELPromptController implements Initializable
         address.setCellValueFactory(new PropertyValueFactory<>("address"));    
     }
     
+    
+    
+    
     @FXML
-    private void actionCheckPesel(ActionEvent event) 
+    private void actionCreateOV(ActionEvent event) throws ParseException
     {
-        Owners owner = tableView.getSelectionModel().getSelectedItem();
-            setOwner(owner);
-                 
+        if(SessionHolder.getVehicle().getHasOwner() == false && tableView.getSelectionModel().getSelectedIndex() != -1)
+        {
+        dao.WiwDAO.insertOV(SessionHolder.getVehicle().getIdve(), tableView.getSelectionModel().getSelectedItem().getIdow());
+        dao.VehiclesDAO.editVehicleOV(SessionHolder.getVehicle(), true);
+        
+        
+                         
             try 
             {
                 AnchorPane ap = getAnchor();
-                System.out.println("sdf");
-                AnchorPane apx = FXMLLoader.load(getClass().getResource("OwnerModify.fxml"));
+                AnchorPane apx = FXMLLoader.load(getClass().getResource("ConnectOV.fxml"));
                 ap.getChildren().setAll(apx);
                 
             }
@@ -54,15 +72,16 @@ public class PESELPromptController implements Initializable
             {
                 System.out.println(e);
             }
-        
-       
+        }
     }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         setTable();
         tableView.setItems(dao.OwnersDAO.addTable());
+
     }    
     
 }

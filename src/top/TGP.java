@@ -17,12 +17,12 @@ public class TGP extends Application {
     public void start(Stage stage) throws Exception 
     {
         Parent root = FXMLLoader.load(getClass().getResource("LoginPrompt.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("FXMLSheet.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setTitle("Vehicles login");
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     public static void main(String[] args) 

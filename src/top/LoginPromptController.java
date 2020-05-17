@@ -26,8 +26,6 @@ public class LoginPromptController implements Initializable
     private PasswordField inPass;
     @FXML
     private TextField inLogin;
-    //@FXML
-    //private TextField inPass;
     
     private String login;
     private String pass;
@@ -35,28 +33,19 @@ public class LoginPromptController implements Initializable
     @FXML
     private void actionLogin(ActionEvent event) 
     {
-        //Get data from inputs
-        
         login = inLogin.getText();
         pass = inPass.getText();
-        
-        //Check login credentials
-        
+
         Officials user = officialLogin(pass, login);
         
-        if(user==null)
+        if(user == null)
         {
-            //Login credentials ~ok
             outInfo.setText("Incorrect login credentials");
         }
         else 
         {
-            //Login credentials ok
-            //Save user to custom session class
-            
             setServant(user);
-            
-            //Close login window & Open main window        
+       
             try 
             {
                 FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("FXMLSheet.fxml"));
@@ -64,8 +53,9 @@ public class LoginPromptController implements Initializable
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
                 stage.show();
-
-                //close login windows
+                stage.setResizable(false);
+                stage.setTitle("Vehicles");
+                stage.setResizable(false);
                 stage = (Stage) outInfo.getScene().getWindow();
                 stage.close();
             }

@@ -1,6 +1,5 @@
 package top;
 
-import static dao.VehiclesDAO.*;
 import entity.Vehicles;
 import java.io.IOException;
 import java.net.URL;
@@ -10,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import static top.SessionHolder.*;
 
@@ -19,34 +20,43 @@ public class PLATESPromptController implements Initializable
     @FXML
     private Label outInfo;
     @FXML
-    private TextField inPlate;
-    
-    private String plates;
+    private TableView<Vehicles> tableView;
+    @FXML
+    private TableColumn<?, ?> make;
+        
+    @FXML
+    private TableColumn<?, ?> model;
+            
+    @FXML
+    private TableColumn<?, ?> year;
+                
+    @FXML
+    private TableColumn<?, ?> color;
+                    
+    @FXML
+    private TableColumn<?, ?> plates;
+
+                        
+
+public void setTable()
+    {
+        make.setCellValueFactory(new PropertyValueFactory<>("make"));
+        model.setCellValueFactory(new PropertyValueFactory<>("model"));
+        year.setCellValueFactory(new PropertyValueFactory<>("year"));
+        color.setCellValueFactory(new PropertyValueFactory<>("color"));
+        plates.setCellValueFactory(new PropertyValueFactory<>("plates"));
+    }  
     
     @FXML
     private void actionCheckPlates(ActionEvent event) 
     {
-        //Get data from inputs
+
         
-        plates = inPlate.getText();
+        Vehicles vehicle = tableView.getSelectionModel().getSelectedItem();
         
-        //Check if pesel exist
-        
-        Vehicles vehicle = checkPlates(plates);
-        
-        if(vehicle==null)
-        {
-            //~Exist
-            outInfo.setText("Not Found");
-        }
-        else 
-        {
-            //Exist
-            //Save owner to custom session class
-            
+
             setVehicle(vehicle);
-            
-            //Close search window & Open editor       
+     
             try 
             {
                 AnchorPane ap = getAnchor();
@@ -59,13 +69,14 @@ public class PLATESPromptController implements Initializable
             {
                 System.out.println(e);
             }
-        }
+        
        
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        setTable();
+        tableView.setItems(dao.VehiclesDAO.addToTable());
     }    
     
 }
